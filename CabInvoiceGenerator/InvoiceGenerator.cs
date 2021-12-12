@@ -19,23 +19,5 @@ namespace CabInvoiceGenerator
             }
             return totalFare;
         }
-        public double CalculateCabFare(Ride[] ride)
-        {
-            double totalFare = 0;
-            foreach (var data in ride)
-            {
-                totalFare += this.CalculateCabFare(data.distance, data.time);
-            }
-            return totalFare;
-        }
-        public InvoiceSummary CalculateInvoiceSummary(Ride[] ride)
-        {
-            double totalFare = this.CalculateCabFare(ride);
-            InvoiceSummary summary = new InvoiceSummary();
-            summary.totalFare = totalFare;
-            summary.totalNumberOfRides = ride.Count();
-            summary.CalulateAverageFare();
-            return summary;
-        }
     }
 }
